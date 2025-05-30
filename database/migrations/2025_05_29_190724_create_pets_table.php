@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
-            $table->string('photo_patch')->nullable();
+            $table->string('photo_path')->nullable();
             $table->string('name');
             $table->string('specie')->nullable(); //espécie
             $table->string('breed')->nullable(); //raca
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->text('observations')->nullable(); //observacao
             $table->timestamps();
         });
-    }
+    }  
 
     /**
      * Reverse the migrations.

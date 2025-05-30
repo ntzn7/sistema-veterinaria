@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\PetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,8 @@ Route::post('/client', [ClientController::class, 'store']);
 Route::get('/client/edit/{id}', [ClientController::class, 'edit']);
 Route::post('client/{id}', [ClientController::class, 'update']);
 Route::get('client/delete/{id}', [ClientController::class, 'destroy']);
+
+
+//pets
+Route::get('/pet', [PetController::class, 'index']);
+Route::get('/pet/new', [PetController::class, 'create']);
