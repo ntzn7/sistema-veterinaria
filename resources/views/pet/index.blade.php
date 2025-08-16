@@ -10,7 +10,7 @@
             <div class="cold-md-12">
                 <div class="box box-primary">
                     <div class="box-header">
-                        <a href="/pet/new" class="btn btn-success">New Pet</a>
+                        <a href="/pet/new" class="btn btn-success">cadrastar Novo Pet</a>
                     </div>
                         <br>
                         
@@ -31,16 +31,16 @@
 
                                 </thead> 
                                 <tbody>
-                                    @foreach($pets as $pets)
+                                    @foreach($pet as $pet)
 
                                     <tr>
-                                        <td>{{ $pet->id }}</td>
-                                        <td>photo</td>
-                                        <td>{{ $pet->name}}</td>
-                                        <td>Client</td>
-                                        <td>{{ $pet->specie}}</td>
-                                        <td>{{ $pet->gender}}</td>
-                                        <td>Data</td>
+                                        <td>{{$pet->id}}</td>
+                                        <td><img src="{{ asset('storage/' . $pet->photo_path) }}" alt="photo" style="max-widht: 70%"></td>
+                                        <td>{{$pet->name}}</td>
+                                        <td>{{$pet->client->name ?? ''}}</td>
+                                        <td>{{$pet->specie}}</td>
+                                        <td>{{$pet->gender}}</td>
+                                        <td>{{\Carbon\Carbon::parse($pet->birth_date)->format('d/m/Y') }}</td>
 
                                         <td>
                                             <a href="/pet/edit/{{$pet->id}}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>

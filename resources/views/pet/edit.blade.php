@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('body') 
+@section('body')
 
 <script>
 
@@ -66,8 +66,9 @@ close_modal();
   </div>
 </div>
 
+
 <div class="alert alert-primary" role="alert">
-    <h2>Novo Pet</h2>
+    <h2>Edit Pet</h2>
 </div>
 <section class="content">
     <div class="row">
@@ -76,21 +77,21 @@ close_modal();
 
             <br>
             <div class="box-bod no-padding">
-                <form role="form" action="/pet" method="post" enctype="multipart/form-data">
+                <form role="form" action="/pet/{{$thePet->id}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{$thePet->name}}" required>
                         </div>
 
                         <div class="form-group">
-                            <input type="hidden" class="form-control" id="id_client" name="id_client">         
+                            <input type="hidden" class="form-control" id="id_client" name="id_client" value="{{$thePet->Client->id}}" required>         
                         </div>
 
                         <div class="form-group">
                             <label for="client_pet">Cliente (dono do pet):</label>
-                            <input type="text" class="form-control" id="client_pet" name="client_pet" onkeydown="return false;" required>         
+                            <input type="text" class="form-control" id="client_pet" name="client_pet" value="{{$thePet->Client->name}}" onkeydown="return false;" required>         
                         </div>
 
                         <!-- Modal Client -->
@@ -98,60 +99,67 @@ close_modal();
                             Selecionar Cliente
                         </button>
 
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="no_photo" name="no_photo">
+                            <label class="no_photo" for="no_photo">Sem Foto</label>
+                        </div>
+
                         <div class="form-group">
                             <label for="Photo">Photo</label>
                             <input type="file" class="form-control" id="photo" name="photo">         
                         </div>
+
                         <div class="form-group">
                             <label for="specie">Specie</label>
-                            <input type="text" class="form-control" id="specie" name="specie">         
-                        </div>            
+                            <input type="text" class="form-control" id="specie" name="specie" value="{{$thePet->specie}}">         
+                        </div>    
+
                         <div class="form-group">
-                            <label for="breed">raça</label>
-                            <input type="text" class="form-control" id="breed" name="breed">         
+                            <label for="breed">Raça</label>
+                            <input type="text" class="form-control" id="breed" name="breed" value="{{$thePet->breed}}" >         
                         </div>
 
                         <div class="form-group">
                             <label for="color">Cor</label>
-                            <input type="text" class="form-control" id="color" name="color">         
+                            <input type="text" class="form-control" id="color" name="color" value="{{$thePet->color}}">         
                         </div>
 
                         <div class="form-group">
                             <label for="height">Altura</label>
-                            <input type="number" class="form-control" id="height" name="height" step="0.001" valor="0.000" placeholder="0.000">         
+                            <input type="number" class="form-control" id="height" name="height" step="0.001" valor="0.000" placeholder="0.000" value="{{$thePet->height}}">         
                         </div>
 
                         <div class="form-group">
                             <label for="weight">Peso</label>
-                            <input type="number" class="form-control" id="weight" name="weight" step="0.001" valor="0.000" placeholder="0.000">         
+                            <input type="number" class="form-control" id="weight" name="weight" step="0.001" valor="0.000" placeholder="0.000" value="{{$thePet->weight}}">         
                         </div>
 
                         <div class="form-group">
                             <label for="gender">Genero</label>  
                             <select class="form-control" name="gender" id="gender">
-                                <option value="M">M</option>
-                                <option value="F">F</option>
+                                <option value="M" @if($thePet->gender == "M") {{'selected'}} @endif>M</option>
+                                <option value="F" @if($thePet->gender == "F") {{'selected'}} @endif>F</option>
                             </select>                                
                         </div>
 
                         <div class="form-group">
                             <label for="birth_date">Nascimento</label>
-                            <input type="date" class="form-control" id="birth_date" name="birth_date" required>         
+                            <input type="date" class="form-control" id="birth_date" name="birth_date" required value="{{$thePet->birth_date}}">         
                         </div>
 
                          <div class="form-group">
                             <label for="father">Pai</label>
-                            <input type="text" class="form-control" id="father" name="father">         
+                            <input type="text" class="form-control" id="father" name="father" value="{{$thePet->father}}">         
                         </div>
 
                          <div class="form-group">
                             <label for="mother">Mae</label>
-                            <input type="text" class="form-control" id="mother" name="mother">         
+                            <input type="text" class="form-control" id="mother" name="mother" value="{{$thePet->mother}}">         
                         </div>
 
                         <div class="form-group">
                             <label for="observations">Observacao</label>
-                            <textarea class="form-control" rows="4" name="observations" id="observations"></textarea>         
+                            <textarea class="form-control" rows="4" name="observations" id="observations">{{$thePet->observations}}</textarea>         
                         </div>
 
 

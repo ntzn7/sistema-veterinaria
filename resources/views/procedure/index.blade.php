@@ -3,14 +3,14 @@
 @section('body')
 
 <div class="alert alert-success" role="alert">
-    <h2>Clientes</h2>
+    <h2>Procedimentos</h2>
 </div>
     <section class="content">
         <div class="row">
             <div class="cold-md-12">
                 <div class="box box-primary">
                     <div class="box-header">
-                        <a href="/client/new" class="btn btn-success">Cadastrar Novo Cliente</a>
+                        <a href="/procedure/new" class="btn btn-success">Novo Procedimento</a>
                     </div>
                         <br>
                         
@@ -19,30 +19,24 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 10px">#</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Cell phone</th>
-                                        <th>Address</th>
-                                        <th>State</th>
+                                        <th >Name</th>
+                                        <th style="width: 150px">Valor em (R$)</th>
                                         <th style="width: 250px">&nbsp;</th>
                                         
                                     </tr>
 
                                 </thead> 
                                 <tbody>
-                                    @foreach($clients as $client)
+                                    @foreach($procedures as $procedure)
 
                                     <tr>
-                                        <td>{{ $client->id }}</td>
-                                        <td>{{ $client->name }}</td>
-                                        <td>{{ $client->email }}</td>
-                                        <td>{{ $client->cell_phone }}</td>
-                                        <td>{{ $client->address }}</td>
-                                        <td>{{ $client->state }}</td>
+                                        <td>{{ $procedure->id }}</td>
+                                        <td>{{ $procedure->name }}</td>
+                                        <td>{{ $procedure->price }}</td>
 
                                         <td>
-                                            <a href="/client/edit/{{$client->id}}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>
-                                            <a href="/client/delete/{{$client->id}}" onclick="return confim('do you want to delete this record id = {{$client->id}} ?')" class="btn btn-danger btn-xs"><i class="fa fa-trash">Delete</i></a>
+                                            <a href="/procedure/edit/{{$procedure->id}}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>
+                                            <a href="/procedure/delete/{{$procedure->id}}" onclick="return confim('do you want to delete this record id = {{$procedure->id}} ?')" class="btn btn-danger btn-xs"><i class="fa fa-trash">Delete</i></a>
                                         </td>
                                     </tr>
 

@@ -3,14 +3,14 @@
 @section('body')
 
 <div class="alert alert-success" role="alert">
-    <h2>Clientes</h2>
+    <h2>veterinarios</h2>
 </div>
     <section class="content">
         <div class="row">
             <div class="cold-md-12">
                 <div class="box box-primary">
                     <div class="box-header">
-                        <a href="/client/new" class="btn btn-success">Cadastrar Novo Cliente</a>
+                        <a href="/vet/new" class="btn btn-success">Novo Veterinario</a>
                     </div>
                         <br>
                         
@@ -30,19 +30,19 @@
 
                                 </thead> 
                                 <tbody>
-                                    @foreach($clients as $client)
+                                    @foreach($vets as $vet)
 
                                     <tr>
-                                        <td>{{ $client->id }}</td>
-                                        <td>{{ $client->name }}</td>
-                                        <td>{{ $client->email }}</td>
-                                        <td>{{ $client->cell_phone }}</td>
-                                        <td>{{ $client->address }}</td>
-                                        <td>{{ $client->state }}</td>
+                                        <td>{{ $vet->id }}</td>
+                                        <td>{{ $vet->name }}</td>
+                                        <td>{{ $vet->email }}</td>
+                                        <td>{{ $vet->cell_phone }}</td>
+                                        <td>{{ $vet->address }}</td>
+                                        <td>{{ $vet->state }}</td>
 
                                         <td>
-                                            <a href="/client/edit/{{$client->id}}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>
-                                            <a href="/client/delete/{{$client->id}}" onclick="return confim('do you want to delete this record id = {{$client->id}} ?')" class="btn btn-danger btn-xs"><i class="fa fa-trash">Delete</i></a>
+                                            <a href="/vet/edit/{{$vet->id}}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>
+                                            <a href="/vet/delete/{{$vet->id}}" onclick="return confim('do you want to delete this record id = {{$vet->id}} ?')" class="btn btn-danger btn-xs"><i class="fa fa-trash">Delete</i></a>
                                         </td>
                                     </tr>
 

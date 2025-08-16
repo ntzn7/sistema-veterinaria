@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Client extends Model
+class Vet extends Model
 {
     use HasFactory;
 
-    public function pets() : HasMany
+    public function consultations(): HasMany
     {
-        return $this->hasmany(Pet::class);
+        return $this->hasMany(Consultation::class);
     }
 }

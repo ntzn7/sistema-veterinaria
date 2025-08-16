@@ -3,7 +3,7 @@
 @section('body')
 
 <div class="alert alert-primary" role="alert">
-    <h2>Novo Cliente</h2>
+    <h2>Novo Veterinario</h2>
 </div>
 <section class="content">
     <div class="row">
@@ -12,7 +12,7 @@
 
             <br>
             <div class="box-bod no-padding">
-                <form role="form" action="/client" method="post">
+                <form role="form" action="/vet" method="post">
                     @csrf
                     <div class="box-body">
                         <div class="form-group">

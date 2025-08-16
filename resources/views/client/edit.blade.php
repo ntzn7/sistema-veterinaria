@@ -3,7 +3,7 @@
 @section('body')
 
 <div class="alert alert-warning" role="alert">
-    <h2>Edit Client</h2>
+    <h2>Editar Cliente</h2>
 </div>
 <section class="content">
     <div class="row">
