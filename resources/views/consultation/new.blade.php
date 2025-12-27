@@ -39,15 +39,148 @@ document.getElementById("vet_name").value = document.getElementById("grid_vet").
 
 close_modal_vets();
 
-}
+} 
 
 // procedimentos
 
 function close_modal_procedures(){
     $('#modalProcedures').modal('hide');    
     }
+
+// add procedures
+function add_procedures_consultation(element) {
+  
+  
+
+  var table = document.getElementById("grid");
+  var row = table.insertRow(1);
+  
+  var cell_id = row.insertCell(0);
+  var cell_name = row.insertCell(1);
+  var cell_price = row.insertCell(2);
+  var cell_actions = row.insertCell(3);   
+  
+  cell_id.innerHTML = document.getElementById("grid_procedure").rows[element.parentNode.parentNode.rowIndex].cells[0].innerHTML;
+  cell_name.innerHTML = document.getElementById("grid_procedure").rows[element.parentNode.parentNode.rowIndex].cells[1].innerHTML;
+  cell_price.innerHTML = document.getElementById("grid_procedure").rows[element.parentNode.parentNode.rowIndex].cells[2].innerHTML;
+         
+      
+      cell_actions.innerHTML = '<button type="button"  class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top"  onclick= remove_procedure_consultation(this)>' +
+  '<i class="fa fa-trash"></i> Delete</button>'; 
+  
+     // atualizar(aumentando) a quantidade na tabela procedimentos
+  
+   document.getElementById("qte_procedure_consultation").innerHTML = 
+       
+      parseInt(document.getElementById("qte_procedure_consultation").innerHTML) + 1;
+       
+
+       
+      // atualiza (aumentando) o valor total da tabela procedimentos
+  
+  
+        document.getElementById("consultation_value").innerHTML = 
+  parseFloat(document.getElementById("consultation_value").innerHTML) +
+  parseFloat(document.getElementById("grid_procedure").rows[element.parentNode.parentNode.rowIndex].cells[2].innerHTML) ;     
+      
+  //total value 
+
+  document.getElementById("total_value").value = document.getElementById("consultation_value").innerHTML;
+ 
+  close_modal_procedures();
+  
+  }
+
+  function remove_procedure_consultation(element) {
+  
+  // atualizar(diminuindo) a quantidade na tabela procedimentos     
+document.getElementById("qte_procedure_consultation").innerHTML = 
+   parseFloat(document.getElementById("qte_procedure_consultation").innerHTML) - 1 ;
+
+
+
+// atualiza (diminuindo) o valor total da tabela procedimentos      
     
-</script>
+
+document.getElementById("consultation_value").innerHTML = (parseFloat(document.getElementById("consultation_value").innerHTML) -
+parseFloat(document.getElementById("grid").rows[element.parentNode.parentNode.rowIndex].cells[2].innerHTML)).toFixed(2);    
+
+
+//total value 
+
+document.getElementById("total_value").value = document.getElementById("consultation_value").innerHTML;
+
+// DELETE ROW
+     
+document.getElementById("grid").deleteRow(element.parentNode.parentNode.rowIndex);
+    
+
+} 
+
+function check_fields() {
+
+
+
+//Vet
+if (!$("#vet_name").val()) {
+  alert('The Consultation must have a vet!');
+return false;
+}
+
+//Pet
+if (!$("#pet_name").val()) {
+  alert('The Consultation must have a Pet!');
+return false;
+}
+
+//procedures
+
+
+
+if (document.getElementById("grid").rows.length < 2){
+
+alert('The Consultation must have Procedures!');
+
+return false;
+
+}
+
+// generate json of procedures
+
+var i;
+var  my_json = '[';
+
+var  qty_commas = document.getElementById("grid").rows.length -2;
+ // -2 because the fisrt row has the name of the fields
+
+// read all the procedures
+
+var table_procedures_consultation = document.getElementById("grid");
+
+document.getElementById('memo_procedures').value= '';
+
+for (var i = 1, row; row = table_procedures_consultation.rows[i]; i++) {
+
+      my_json = my_json + '{"IDPROCEDURE":' + table_procedures_consultation.rows[i].cells[0].innerHTML + '}';
+      
+      
+
+      if (qty_commas > 0){
+          my_json = my_json + ',';
+          qty_commas = qty_commas -1;
+        } 
+
+    }
+
+my_json = my_json + ']';
+
+document.getElementById('memo_procedures').value= my_json;
+
+
+
+}
+
+
     
 </script>
 
@@ -163,7 +296,7 @@ function close_modal_procedures(){
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalProceduresLabel">Procedimentos</h1>
+        <h1 class="modal-title fs-5" id="modalProceduresLabel">Procedures</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -212,7 +345,7 @@ function close_modal_procedures(){
 
 
 <div class="alert alert-primary" role="alert">
-    <h2>Nova Constulta</h2>
+    <h2>New Consultation</h2>
 </div>
 <section class="content">
     <div class="row">
@@ -243,7 +376,7 @@ function close_modal_procedures(){
                         </div>
 
                         <div class="form-group">
-                            <label for="vet_name">Nome:</label>
+                            <label for="vet_name">Name:</label>
                             <input type="text" class="form-control" id="vet_name" name="vet_name" required readonly >
                         </div>
 
@@ -251,7 +384,7 @@ function close_modal_procedures(){
 
                             <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPets">
-                        Selecione o Pet
+                        Select Pet
                         </button>
 
                         <div class="form-group " >
@@ -259,43 +392,75 @@ function close_modal_procedures(){
                         </div>
 
                         <div class="form-group">
-                            <label for="pet_name">Nome:</label>
+                            <label for="pet_name">Name:</label>
                             <input type="text" class="form-control" id="pet_name" name="pet_name"  readonly>
                         </div>
 
                         <div class="form-group">
-                            <label for="specie">Especie:</label>
+                            <label for="specie">Specie:</label>
                             <input type="text" class="form-control" id="specie" name="specie" readonly  >
                         </div>
 
                         <div class="form-group">
-                            <label for="client">Cliente:</label>
+                            <label for="client">Client:</label>
                           <input type="text" class="form-control" id="client" name="client" readonly  >
                         </div> 
 
+                        <div hidden class="form-group">
+                            <label for="total_value">Valor Total:</label>
+                            <input type="text" class="form-control" id="total_value" name="total_value" readonly>
+                        </div>
+
+                        <div hidden class="form-group">
+                            <label for="memo_procedures">Memo procedures:</label>
+                            <input type="text" class="form-control" id="memo_procedures" name="memo_procedures" readonly>
+                        </div>
+
                         <h3 class="text-success">Procedimentos</h3>
 
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPets">
-                        Selecione o Procedimento
-                        </button>
+                         <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalProcedures">
+                            Selecione o Procedimento
+                            </button>  
 
-                        <table id="grid" class="table table-bordered table-striped table-hover">
-                            <thead>
-                                <tr>
-                                      <th>#</th>
-                                      <th>Nome</th>
-                                      <th>Preço(R$)</th>
-                                      <th>Ações</th>
-                                </tr>      
-                            </thead>
-                        </table>
+                            <table id="grid" class="table table-bordered table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nome</th>
+                                        <th>Preço(R$)</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                            </table>
 
+                            <div class="row justify-content-end">
+                                <div class="col-md-3 col-sm-6 col-xs-12">
+
+                                   <h5>
+                                    <span class="text-primary">Quantidade</span>
+                                    <span class="text-primary" id="qte_procedure_consultation">0</span>
+                                   </h5>
+
+                                </div>
+
+                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <h5>
+                                        <span class="text-danger">Total</span>
+                                        <span class="text-danger" id="consultation_value">0.0</span>
+                                    </h5>
+
+                                </div>
+
+
+                            </div>
+
+                       
 
                     </div>
                   <br>
                   <div class="box-footer">
-                    <button type="submit" class="btn btn-success">Salvar</button>
+                    <button type="submit" class="btn btn-success">Save</button>
 
                   </div>
 
