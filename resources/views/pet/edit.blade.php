@@ -68,7 +68,7 @@ close_modal();
 
 
 <div class="alert alert-primary" role="alert">
-    <h2>Edit Pet</h2>
+    <h2>Editar Pet</h2>
 </div>
 <section class="content">
     <div class="row">
@@ -81,7 +81,7 @@ close_modal();
                     @csrf
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">Nome</label>
                             <input type="text" class="form-control" id="name" name="name" value="{{$thePet->name}}" required>
                         </div>
 
@@ -105,12 +105,12 @@ close_modal();
                         </div>
 
                         <div class="form-group">
-                            <label for="Photo">Photo</label>
+                            <label for="Photo">Foto</label>
                             <input type="file" class="form-control" id="photo" name="photo">         
                         </div>
 
                         <div class="form-group">
-                            <label for="specie">Specie</label>
+                            <label for="specie">Especie</label>
                             <input type="text" class="form-control" id="specie" name="specie" value="{{$thePet->specie}}">         
                         </div>    
 
@@ -166,7 +166,7 @@ close_modal();
                     </div>
                 <br>
                     <div class="box-footer">
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success">Salvar</button>
 
                     </div>
 

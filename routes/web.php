@@ -7,6 +7,7 @@ use App\Http\Controllers\PetController;
 use App\Http\Controllers\ProcedureController;
 use App\Http\Controllers\VetController;
 use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,10 +56,17 @@ Route::get('/vet', [VetController::class, 'index']);
 Route::get('/vet/new', [VetController::class, 'create']);
 Route::post('/vet', [VetController::class, 'store']);
 Route::get('/vet/edit/{id}', [VetController::class, 'edit']);
-Route::post('vet/{id}', [VetController::class, 'update']);
-Route::get('vet/delete/{id}', [VetController::class, 'destroy']);
+Route::post('/vet/{id}', [VetController::class, 'update']);
+Route::get('/vet/delete/{id}', [VetController::class, 'destroy']);
 
 ///consultations
 Route::get('/consultation', [ConsultationController::class, 'index']);
 Route::get('/consultation/new', [ConsultationController::class, 'create']);
-Route::post('/consulation', [ConsultationController::class, 'store']);
+Route::post('/consultation', [ConsultationController::class, 'store']);
+Route::get('/consultation/delete/{id}', [ConsultationController::class, 'destroy']);
+Route::get('/consultation/show/{id}', [ConsultationController::class, 'show']);
+
+//report
+
+Route::get('/report', [ReportController::class, 'index']);
+Route::post('/report/show', [ReportController::class, 'show']);

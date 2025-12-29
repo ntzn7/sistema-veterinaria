@@ -19,11 +19,11 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 10px">#</th>
-                                        <th>Name</th>
+                                        <th>Nome</th>
                                         <th>Email</th>
-                                        <th>Cell phone</th>
-                                        <th>Address</th>
-                                        <th>State</th>
+                                        <th>Celular</th>
+                                        <th>Endereco</th>
+                                        <th>Estado</th>
                                         <th style="width: 250px">&nbsp;</th>
                                         
                                     </tr>

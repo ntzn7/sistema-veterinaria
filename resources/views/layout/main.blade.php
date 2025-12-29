@@ -35,9 +35,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="/consultation">Atendimento</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+             <li class="nav-item">
+                <a class="nav-link" href="/report">Relatórios</a>
             </li>
+
 
             </ul>
         </div>

@@ -199,10 +199,10 @@ document.getElementById('memo_procedures').value= my_json;
             <thead>
               <tr>
                 <th style="width: 10px">#</th>
-                <th>Name</th>
+                <th>Nome</th>
                 <th>Dono</th>
-                <th>Specie</th>
-                <th>gender</th>
+                <th>Especie</th>
+                <th>genero</th>
                 
                 <th style="width: 140px">&nbsp;</th>
               </tr>
@@ -222,7 +222,7 @@ document.getElementById('memo_procedures').value= my_json;
 
                 <td>
                   <button type="button" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top"   onclick="add_pet(this)">
-                    <i class="fa fa-plus"></i> Select
+                    <i class="fa fa-plus"></i> Selecionar
                   </button>
               
                   
@@ -268,7 +268,7 @@ document.getElementById('memo_procedures').value= my_json;
                               
                                <td>
                                <button type="button" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top"   onclick="add_vet(this)">
-                                    <i class="fa fa-plus"></i> Select
+                                    <i class="fa fa-plus"></i> Selecionar
                                 </button>
                                 
                                </td>
@@ -282,7 +282,7 @@ document.getElementById('memo_procedures').value= my_json;
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
        
       </div>
     </div>
@@ -296,7 +296,7 @@ document.getElementById('memo_procedures').value= my_json;
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalProceduresLabel">Procedures</h1>
+        <h1 class="modal-title fs-5" id="modalProceduresLabel">Procedimentos</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -323,7 +323,7 @@ document.getElementById('memo_procedures').value= my_json;
 
                 <td>
                   <button type="button" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top"   onclick="add_procedures_consultation(this)">
-                    <i class="fa fa-plus"></i> Select
+                    <i class="fa fa-plus"></i> Selecionar
                   </button>
               
                   
@@ -335,7 +335,7 @@ document.getElementById('memo_procedures').value= my_json;
           </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
@@ -358,7 +358,7 @@ document.getElementById('memo_procedures').value= my_json;
                     @csrf
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="consultation_date">Date</label>
+                            <label for="consultation_date">Data</label>
                             <input type="date" class="form-control" id="consultation_date" name="consultation_date" required
                              oninvalid="this.setCustomValidity('Campo requerido')"
                              onchange="try{setCustomValidity('')}catch(e){}">
@@ -376,7 +376,7 @@ document.getElementById('memo_procedures').value= my_json;
                         </div>
 
                         <div class="form-group">
-                            <label for="vet_name">Name:</label>
+                            <label for="vet_name">Nome:</label>
                             <input type="text" class="form-control" id="vet_name" name="vet_name" required readonly >
                         </div>
 
@@ -384,7 +384,7 @@ document.getElementById('memo_procedures').value= my_json;
 
                             <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPets">
-                        Select Pet
+                        Selecionar pet
                         </button>
 
                         <div class="form-group " >
@@ -392,17 +392,17 @@ document.getElementById('memo_procedures').value= my_json;
                         </div>
 
                         <div class="form-group">
-                            <label for="pet_name">Name:</label>
+                            <label for="pet_name">Nome:</label>
                             <input type="text" class="form-control" id="pet_name" name="pet_name"  readonly>
                         </div>
 
                         <div class="form-group">
-                            <label for="specie">Specie:</label>
+                            <label for="specie">Especie:</label>
                             <input type="text" class="form-control" id="specie" name="specie" readonly  >
                         </div>
 
                         <div class="form-group">
-                            <label for="client">Client:</label>
+                            <label for="client">Cliente:</label>
                           <input type="text" class="form-control" id="client" name="client" readonly  >
                         </div> 
 

@@ -16,7 +16,7 @@ class ConsultationController extends Controller
     public function index()
     {
         $consultations = Consultation::all();
-
+//dd($consultations);
         if(isset($consultations)){
             return view('consultation.index', compact('consultations'));
         }
@@ -41,10 +41,11 @@ class ConsultationController extends Controller
      */
     public function store(Request $request)
     {
-        $thepet = Pet::find($request->input('id_pet'));
+
+        $thePet = Pet::find($request->input('id_pet'));
         $theVet = Vet::find($request->input('id_vet'));
 
-        $theConsultation = new Consutation();
+        $theConsultation = new Consultation();
         $theConsultation->the_date = date('Y-m-d', strtotime($request->consultation_date));
 
         $theConsultation->pet()->associate($thePet);
@@ -63,7 +64,7 @@ class ConsultationController extends Controller
             $theConsultation->procedures()->attach($value->IDPROCEDURE);
         }
 
-        return redirect('/consultation')
+        return redirect('/consultation');
     }
 
     /**
@@ -71,7 +72,12 @@ class ConsultationController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $theConsultation = consultation::find($id);
+
+        if(isset($theConsultation)) {
+
+            return view('consultation.show', compact('theConsultation'));
+        }
     }
 
     /**
@@ -95,6 +101,10 @@ class ConsultationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $theConsultation = Consultation::find($id);
+        if(isset($theConsultation)){
+            $theConsultation->delete();
+        }
+        return redirect('/consultation');
     }
 }

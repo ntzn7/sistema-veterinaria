@@ -19,7 +19,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 10px">#</th>
-                                        <th >Name</th>
+                                        <th >Nome</th>
                                         <th style="width: 150px">Valor em (R$)</th>
                                         <th style="width: 250px">&nbsp;</th>
                                         

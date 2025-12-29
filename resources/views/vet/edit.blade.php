@@ -33,7 +33,7 @@
                         </div>
 
                             <div class="form-group">
-                              <label>State( states of Brazil):</label>
+                              <label>Estado( Estado Do Brasil):</label>
                                <select class="form-control" id="state" name="state">
                                 <option value="AC" @if ( $theVet->state  == "AC") {{ 'selected' }} @endif>AC</option>
                                 <option value="AL" @if ( $theVet->state  == "AL") {{ 'selected' }} @endif>AL</option>
@@ -71,7 +71,7 @@
                     </div>
                   <br>
                   <div class="box-footer">
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success">Salvar</button>
 
                   </div>
 

@@ -19,7 +19,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 10px">#</th>
-                                        <th>Date</th>
+                                        <th>Data</th>
                                         <th>Pet</th>
                                         <th>Cliente</th>
                                         <th>Veterinario</th>
@@ -33,16 +33,16 @@
                                     @foreach($consultations as $consultation)
 
                                     <tr>
-                                        <td>id</td>
-                                        <td>data</td>
-                                        <td>Pet</td>
-                                        <td>clintee</td>
-                                        <td>veterinario</td>
-                                        <td>total</td>
+                                        <td>{{$consultation->id}}</td>
+                                        <td>{{\Carbon\Carbon::parse($consultation->the_date)->format('d/m/y')}}</td>
+                                        <td>{{$consultation->pet->name ?? ''}}</td>
+                                        <td>{{$consultation->pet->client->name ?? ''}}</td>
+                                        <td>{{$consultation->vet->name ?? ''}}</td>
+                                        <td>{{$consultation->total_cost}}</td>
 
                                         <td>
-                                            <a href="/consultation/edit/{{$consultation->id}}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>Edit</a>
-                                            <a href="/consultation/delete/{{$consultation->id}}" onclick="return confim('do you want to delete this record id = {{$consultation->id}} ?')" class="btn btn-danger btn-xs"><i class="fa fa-trash">Delete</i></a>
+                                            <a href="/consultation/show/{{$consultation->id}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i>Detalhes</a>
+                                            <a href="/consultation/delete/{{$consultation->id}}" onclick="return confim('voce quer deletar esse registro ? = {{$consultation->id}} ?')" class="btn btn-danger btn-xs"><i class="fa fa-trash">Delete</i></a>
                                         </td>
                                     </tr>
 
